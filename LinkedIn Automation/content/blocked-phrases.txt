@@ -1,0 +1,7 @@
+# One phrase per line (plain text, case-insensitive match).
+# Add company-specific or personal phrases you never want published.
+#
+# Examples (uncomment or add your own):
+# my company name
+# interviewing elsewhere
+# open to offers

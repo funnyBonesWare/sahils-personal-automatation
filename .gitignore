@@ -1,14 +1,5 @@
-.env
-.venv/
-venv/
-__pycache__/
-*.pyc
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-*.log
-playwright/.cache/
-storage/
-screenshots/
-*.session
 .DS_Store
+*.log
+
+# Per-project storage (post history, profile context — keep local)
+**/storage/

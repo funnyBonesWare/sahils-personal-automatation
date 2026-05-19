@@ -1,0 +1,16 @@
+---
+description: Sahil's Personal Automations — monorepo root
+globs:
+  - "**/*"
+---
+
+# Sahil's Personal Automations
+
+Private monorepo for personal automation projects. Everything is **prompt-driven from Cursor** — no Python, no cron, no browser automation. Cursor writes content into versioned files; Sahil copy-pastes into the target app.
+
+## Projects
+
+- **`LinkedIn Automation/`** — daily LinkedIn post, comments, and connection notes.
+  See `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc` and `LinkedIn Automation/content/VOICE.md`.
+
+Future projects live as sibling folders at the repo root with their own `.cursor/rules/*.mdc`.

@@ -1,72 +1,26 @@
-# LinkedIn Automation
+# Sahil's Personal Automations
 
-Private project for LinkedIn workflows (posting, engagement, messaging, etc.) using browser automation. Credentials stay in local `.env` only.
+Private monorepo for personal workflow automation — **everything is prompt-driven from Cursor**. No Python, no cron, no API keys.
 
-## Status
+## Projects
 
-Early scaffold. Implemented so far:
+| Folder | Description |
+|--------|-------------|
+| [**LinkedIn Automation**](LinkedIn%20Automation/) | Daily LinkedIn post, comments, and connection notes — Cursor writes content in Sahil's voice, Sahil copy-pastes into LinkedIn |
 
-- Environment-based config (`src/config.py`)
-- Persistent browser session login (`scripts/login.py`)
+More automations can be added as sibling folders later (e.g. Jira summaries, weekly exports). Each project owns its own `.cursor/rules/*.mdc`.
 
-Planned capabilities (add scripts as needed):
+---
 
-- Scheduled or manual posts
-- Connection / follow-up flows
-- Feed engagement (with strict rate limits)
-- Export analytics or lead lists
+## How it works
 
-> **Compliance:** Automating LinkedIn may violate [LinkedIn’s User Agreement](https://www.linkedin.com/legal/user-agreement). Use conservative delays, a real account, and only workflows you are allowed to run. This repo is for personal/private use.
+1. Open this repo in Cursor.
+2. Ask Cursor for what you want, e.g. *"write today's LinkedIn post"*.
+3. Cursor reads the relevant rules + voice files, then saves output to a dated markdown file inside the project folder.
+4. You copy-paste the content into the target app yourself.
 
-## Setup
+That's it. No scripts, no browser automation. See each project's README for the specific prompts and file layout.
 
-```bash
-cd ~/linkedin-automation
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-playwright install chromium
-cp .env.example .env
-# Edit .env with your credentials
-```
-
-## First run — save session
-
-```bash
-python scripts/login.py
-```
-
-Uses a persistent Chromium profile under `storage/browser-profile` so later scripts can reuse the logged-in session without re-entering credentials every time.
-
-## Project layout
-
-```
-linkedin-automation/
-├── src/
-│   └── config.py       # .env loader
-├── scripts/
-│   └── login.py        # Sign in & persist session
-├── storage/            # gitignored — browser profile, exports
-├── .env.example
-└── requirements.txt
-```
-
-## Environment variables
-
-| Variable | Description |
-|----------|-------------|
-| `LINKEDIN_EMAIL` | Account email |
-| `LINKEDIN_PASSWORD` | Account password |
-| `BROWSER_USER_DATA_DIR` | Persistent profile path (default: `storage/browser-profile`) |
-| `HEADLESS` | `true` / `false` (default: `false` for login) |
-| `ACTION_DELAY_SECONDS` | Pause between automated actions (default: `3`) |
-
-## Security
-
-- Never commit `.env` or `storage/`
-- Repository is **private** on GitHub
-- Rotate passwords if `.env` is ever exposed
-
-## License
+---
 
 Private — personal use only.

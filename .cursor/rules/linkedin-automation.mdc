@@ -8,6 +8,10 @@ globs:
 
 Monorepo path: **`LinkedIn Automation/`**. All file paths in this rule prefix with that folder — e.g. `LinkedIn Automation/drafts/YYYY-MM-DD.md`.
 
-Before writing any post or comment, **read `LinkedIn Automation/content/VOICE.md`**. The full operating manual is in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
+Before writing any post or comment:
+
+1. **HARD RULE — never reference Sahil's employer or current work.** No `we`, `our team`, `this sprint`, product surfaces, internal tools, customer numbers. Reframe as past-personal (`I've shipped…`), hypothetical (`imagine a dashboard that…`), or teaching (`the senior habit is…`). See the **CRITICAL — Never reference Sahil's employer or current work** section in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc` and the blocklist in `LinkedIn Automation/content/blocked-phrases.txt`.
+2. **Read `LinkedIn Automation/content/VOICE.md`** — voice manual.
+3. Full operating manual: `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
 
 There is no Python, no browser automation, no API key. Cursor writes files; Sahil copy-pastes into LinkedIn manually.

@@ -1,7 +1,51 @@
-# One phrase per line (plain text, case-insensitive match).
-# Add company-specific or personal phrases you never want published.
-#
-# Examples (uncomment or add your own):
-# my company name
-# interviewing elsewhere
-# open to offers
+# One phrase per line (plain text, case-insensitive substring match).
+# Cursor must refuse to publish (and rewrite) any draft containing any of these.
+# Add YOUR company name, product names, codenames, customer names below.
+
+# === Job-search signals ===
+open to work
+opentowork
+looking for roles
+looking for opportunities
+dm for opportunities
+dm me for roles
+hit me up if hiring
+seeking new opportunities
+
+# === Employer-implying first-person plural (HARD BLOCK) ===
+we shipped
+we deployed
+we rolled out
+we wrapped
+we cut
+we run
+we had
+we built
+we just
+our team
+our app
+our grid
+our dashboard
+our admin
+our operator
+our fleet
+our customers
+our users
+this sprint
+last sprint
+last week we
+this quarter we
+
+# === Generic product-surface words that fingerprint Sahil's current work ===
+# (uncomment / add specifics you want never to slip into a post)
+# operator tablet
+# floor tablet
+# fleet dashboard
+# the admin ui
+# the operator view
+
+# === YOUR company / product / customer / codenames (FILL IN — keep this file private) ===
+# acme corp
+# project nightingale
+# customer xyz
+# internal-tool-name

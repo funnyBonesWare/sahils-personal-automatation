@@ -49,7 +49,9 @@ Coworkers, managers, and recruiters at Sahil's current company follow this accou
 - Personal hooks (employer-safe — see rule above), production vs demo, numbered sections, one engagement question at the end of posts
 - Humble senior peer — specific public tools (React, AG Grid, WebSockets, TypeScript, V8, etc.)
 - **Never:** "excited to share", "let's dive in", "game-changer", hollow praise, hashtag spam, job-search language, employer-identifying detail
-- Comments: 1–3 sentences, peer engineer, one concrete technical point — not "Great post!"
+- **Easy English:** simple words, short sentences, warm Indian professional tone (see `content/VOICE.md` § Easy English). Not essay-polished.
+- **No em dash (`—`)** in post / comment / connect body. Use full stop, comma, colon, or new line. Em dash in numbered labels is a common AI tell.
+- Comments: same easy English + no em dash rules as posts. 1–3 sentences, peer engineer, one concrete technical point. Explain acronyms inline in plain words. Not "Great post!"
 
 If the draft could be anyone's LinkedIn template, **rewrite until it matches `content/VOICE.md` excerpts**.
 
@@ -103,13 +105,17 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
   - Italic uppercase: `𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡`
   - Italic lowercase: `𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻`
   - Use bold for: the opening hook line, every numbered section label, and any 1–2 word emphasis. Use italic for a single emphasized word/phrase. Use neither for code identifiers — write `useMemo`, `React.memo`, `valueGetter` as plain text.
+  - **Numbered sections:** put the `1️⃣` label on its own line; start body text on the next line. Do not join label and body with `—`.
+  - **Easy English + no em dash:** mandatory for all LinkedIn body text. See `content/VOICE.md` § Easy English.
 - After saving, print a short "copy-paste checklist" in chat: filename + a one-line summary of theme. Do **not** print the post body in chat (the file is the artifact).
 
 ### 4. Comments (when asked, or as part of "today's content")
 
 - Save to `comments/YYYY-MM-DD.md` — one section per comment.
 - Each section: `## Comment N` then `Target: <post URL>` then a blank line then the comment text.
-- Up to **2 comments per day**. Peer-engineer tone (see VOICE.md). 1–3 sentences. Mention a concrete stack/pattern/tradeoff.
+- Default **2 comments per day**. If Sahil pastes more target URLs, write one comment per URL.
+- **Same voice rules as posts:** easy conversational Indian English, no em dash (`—`) in comment body, employer-safe. See `content/VOICE.md` § Easy English and § Comments.
+- 1–3 sentences. One concrete stack/pattern/tradeoff. **Explain acronyms inline** (e.g. PKCE, OIDC) in plain words when used.
 - If Sahil hasn't given target URLs, ask for them — do **not** invent URLs.
 
 ### 5. Connect requests (when asked)
@@ -155,3 +161,5 @@ Sahil pastes the URLs back into chat; Cursor then writes the comments.
 - Don't reference `data/comment-targets.csv` or `data/connect-queue.csv` — those files were removed.
 - Don't fabricate LinkedIn post URLs or profile URLs.
 - Don't write generic LinkedIn AI-sounding posts. If it could be anyone's, rewrite.
+- Don't use em dash (`—`) in post / comment / connect body. Rewrite with periods, commas, or line breaks.
+- Don't write essay-polished English. Default to easy, conversational Indian professional tone per `content/VOICE.md`.

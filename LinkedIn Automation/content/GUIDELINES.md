@@ -32,16 +32,21 @@ Your audience includes people at your **current company** — managers, coworker
 - Criticizing your employer or saying you want to leave (also: praising, naming, or hinting at the employer)
 - `#OpenToWork`, resume links, recruiter CTAs
 
-## Comments (1–2/day)
+## Comments (1–2/day; more if Sahil pastes extra URLs)
 
+- **Same rules as posts:** easy conversational Indian English, no em dash (`—`), employer-safe
 - Match **`content/VOICE.md`** — peer engineer, 1–3 sentences, specific insight
 - Add value: stack, pattern, tradeoff, or brief past-personal experience (`I've seen…`, `I ran into…`)
+- **Explain acronyms inline** (PKCE, OIDC, RSC, etc.) in plain words when you use them
 - **Do not** say `we saw…`, `our team…`, or anything that implies a current employer — same rule as posts
 - Do not comment "Great post!" or "Thanks for sharing!" (sounds like a bot)
 
 ## Posts
 
 - Match **`content/VOICE.md`** — Sahil's hooks, numbered sections, production lens, one question at end
+- **Easy English:** simple words, short sentences, warm tone. Not essay-polished.
+- **No em dash (`—`)** in LinkedIn body text. Use full stops, commas, or new lines.
+- Numbered section labels on their own line; body on the next line
 
 ## Connection notes
 

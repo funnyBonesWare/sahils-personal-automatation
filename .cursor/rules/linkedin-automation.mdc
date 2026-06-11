@@ -6,12 +6,19 @@ globs:
 
 # LinkedIn automation (Cursor-only)
 
+**Sahil's only command:** type **`linkedin automation`**. Cursor runs the full pipeline (web search → topic → write files → checklist). **Wednesday** (from 2026-06-17): weekly system-design article + diagrams + LinkedIn teaser. **All other days:** daily post. No need to ask for topics or remember the schedule.
+
 Monorepo path: **`LinkedIn Automation/`**. All file paths in this rule prefix with that folder — e.g. `LinkedIn Automation/drafts/YYYY-MM-DD.md`.
+
+**Goal:** discreet reach and inbound opportunities. Sahil wants to switch to a strong remote role soon **without openly job hunting**. Content pillars: modern frontend, AI in development, and broadly reachable engineering takes — written for reach and to get on the radar of hiring managers and top voices. No `#OpenToWork`, no overt job-search language. Pull, not push. See the **GOAL — discreet reach and inbound opportunities** section in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
 
 Before writing any post or comment:
 
-1. **HARD RULE — never reference Sahil's employer or current work.** No `we`, `our team`, `this sprint`, product surfaces, internal tools, customer numbers. Reframe as past-personal (`I've shipped…`), hypothetical (`imagine a dashboard that…`), or teaching (`the senior habit is…`). See the **CRITICAL — Never reference Sahil's employer or current work** section in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc` and the blocklist in `LinkedIn Automation/content/blocked-phrases.txt`.
-2. **Read `LinkedIn Automation/content/VOICE.md`** — voice manual (easy English, no em dash, explain acronyms in comments).
-3. Full operating manual: `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
+1. **Search the internet first (daily).** Use WebSearch to check current trends across the pillars before picking a topic, and verify any fact/version as an agent before writing. Don't invent LinkedIn post/profile URLs.
+2. **HARD RULE — never reference Sahil's employer or current work.** No `we`, `our team`, `this sprint`, product surfaces, internal tools, customer numbers. Reframe as past-personal (`I've shipped…`), hypothetical (`imagine a dashboard that…`), or teaching (`the senior habit is…`). See the **CRITICAL — Never reference Sahil's employer or current work** section in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc` and the blocklist in `LinkedIn Automation/content/blocked-phrases.txt`.
+3. **Read `LinkedIn Automation/content/VOICE.md`** — voice manual (easy English, no em dash, explain acronyms in comments).
+4. Full operating manual: `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
 
-There is no Python, no browser automation, no API key. Cursor writes files; Sahil copy-pastes into LinkedIn manually.
+**Weekly article:** every **Wednesday** (starting **2026-06-17**), produce a long-form frontend **system design** article (Medium-ready, **with diagrams/images**) plus a short LinkedIn teaser that links to it from the first comment. See the **Weekly article — frontend system design** section in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
+
+No Python, no LinkedIn browser automation, no API key. Cursor *can* search the public web for trends/facts, but writes content into files; Sahil copy-pastes into LinkedIn manually.

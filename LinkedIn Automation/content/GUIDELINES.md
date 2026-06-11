@@ -19,8 +19,17 @@ Your audience includes people at your **current company** — managers, coworker
 
 **Rewrite test:** Could someone at the current company recognize a project, customer, teammate, metric, or product surface? If yes, rewrite.
 
-## Safe topics (posts)
+## Goal — discreet reach + inbound opportunities
 
+Sahil is quietly working toward a strong remote role. Optimize for reach and for getting on the radar of hiring managers and top voices, **without openly job hunting**. Pull, not push. Full strategy: § GOAL in `.cursor/rules/linkedin-automation.mdc` and § Reach in `content/VOICE.md`.
+
+## Safe topics (posts) — three reach pillars
+
+1. **Modern frontend** — React 19, Server Components, Next.js/Remix/Astro/Vite, TypeScript, performance, accessibility, web platform APIs.
+2. **AI in development** — using AI coding tools well, building AI features into apps, honest takes on AI in frontend.
+3. **Broadly reachable engineering** — career judgment, senior vs junior habits, UI system design, tooling, measured industry hot takes.
+
+Also fine:
 - General technical opinions, tradeoffs, tools, patterns — **decoupled from current work**
 - Past learnings reframed as personal or hypothetical
 - Conference talks, courses, open-source, side learning (not "side job hunt")
@@ -51,7 +60,8 @@ Your audience includes people at your **current company** — managers, coworker
 ## Connection notes
 
 - Neutral networking: shared interest, enjoyed their post, same community
-- No mention of job search or “pick your brain about opportunities”
+- **Target for opportunity surface:** hiring managers, eng leaders, founders/CTOs at strong remote-friendly companies, and top frontend/AI voices — but the note stays purely about their work or a shared interest
+- No mention of job search or “pick your brain about opportunities” or “are you hiring” — discreet pull, not push
 
 ## Workflow
 

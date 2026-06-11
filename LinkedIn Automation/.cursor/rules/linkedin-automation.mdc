@@ -42,6 +42,27 @@ Coworkers, managers, and recruiters at Sahil's current company follow this accou
 
 ---
 
+## GOAL — discreet reach and inbound opportunities
+
+Sahil wants to **switch to a strong remote role soon** without openly job hunting. Coworkers and managers still follow this account, so the employer-safety rule above stays **fully in force**. The strategy is *pull, not push*: publish high-reach, genuinely useful content and engage top people so recruiters and hiring managers reach out to **him**.
+
+**What this means for daily output:**
+
+- **Be discreet, never overt.** No `#OpenToWork`, no "looking for roles", no "DM me for opportunities", no resume links, no "ready for my next chapter". Anything that reads as active job search is blocked. Opportunity comes from value + visibility, not announcements.
+- **Optimize every post for reach** (see `content/VOICE.md` § Reach). Strong scroll-stopping first line, skimmable structure, a real opinion or tradeoff, and one genuine question that invites replies. Comments and replies drive the algorithm more than the post itself, so reply to every meaningful comment in Sahil's voice.
+- **Signal seniority and range, quietly.** Content should make a smart hiring manager think "this person clearly ships strong frontend and uses AI well" without Sahil ever saying "hire me". Depth, judgment, and teaching are the flex.
+- **Networking is the engine.** Use connect requests and comments to land on the radar of hiring managers, eng leaders, founders, and top frontend/AI voices. Notes stay neutral networking (shared interest, enjoyed their post) — never a job pitch. See `connects/` workflow in § File layout.
+
+**Content pillars (rotate, don't repeat a theme within 5 posts):**
+
+1. **Modern frontend** — React 19 / Server Components / Suspense, the framework landscape (Next.js, Remix, Astro, Vite), performance, state management, TypeScript, accessibility, web platform APIs.
+2. **AI in development** — using AI coding tools well (Cursor, agents, prompting context, review habits), building AI features into apps (LLM calls, streaming UI, RAG, evals), and honest takes on where AI helps vs hurts in frontend work.
+3. **Broadly reachable engineering** — career judgment, senior vs junior habits, system design for UIs, "things I wish I knew earlier", tooling, hot takes on industry trends. These travel beyond the frontend bubble and pull wider reach.
+
+All three pillars stay employer-safe via past-personal, hypothetical, or teaching framing. The topic is now broader and reach-focused; the safety rule is unchanged.
+
+---
+
 ## Voice (read before every post/comment)
 
 **Always read `content/VOICE.md` first.** Write as Sahil Siddiqui, not generic AI.
@@ -64,34 +85,89 @@ Safety rules: `content/GUIDELINES.md` and `content/blocked-phrases.txt`. Coworke
 | Path | Purpose |
 |------|---------|
 | `drafts/YYYY-MM-DD.md` | Today's post body + hashtags |
+| `articles/YYYY-MM-DD.md` | Weekly long-form frontend system design article (Medium-ready, with images). See § Weekly article. |
+| `articles/assets/YYYY-MM-DD-*.png` | Images/diagrams embedded in that week's article |
 | `comments/YYYY-MM-DD.md` | Up to 2 comments for today — each with target post URL + comment text |
 | `connects/YYYY-MM-DD.md` | Today's connection requests — each with profile URL + personalized note |
 | `storage/post-history.jsonl` | Append one line per published post (date, theme, hook). Create if missing. |
 | `storage/profile/recent-posts.md` | Sahil's recent LinkedIn posts (manual paste) — used to avoid repeats. Create when first asked. |
 | `storage/profile/sahil-siddiqui-profile.md` | Sahil's bio / skills / tone notes — create on first ask. |
 | `prompts/daily-request.md` | Optional brief Sahil edits before asking for today's content |
+| `prompts/idea-backlog.md` | Parked post ideas to pull from on slow days |
 
 Always overwrite the dated file for the current day if Sahil asks to "redo" it; never silently merge.
 
 ---
 
-## When Sahil asks for "today's post" / "today's content"
+## TRIGGER — `linkedin automation` (Sahil's only command)
+
+When Sahil says **`linkedin automation`** (or close variants: *linkedin automation for today*, *do linkedin*, *today's linkedin*), **run the full workflow below without asking what to do first**. Sahil should not have to pick topics, name files, or remember Wednesday vs daily. Cursor owns the pipeline.
+
+### Step 0 — Detect the day
+
+Use **today's actual date** (from the session / system).
+
+| Day | What to produce |
+|-----|-----------------|
+| **Wednesday** (from **2026-06-17** onward) | **Weekly article workflow** only — see § Weekly article. Article + diagrams + LinkedIn teaser. Do **not** also write a separate short daily post that day. |
+| **Any other day** | **Daily post workflow** — see § Daily workflow below. |
+
+If Sahil explicitly overrides in the same message (e.g. *redo the article*, *skip article this Wednesday*), follow the override.
+
+### Daily workflow (Mon, Tue, Thu, Fri, Sat, Sun — and Wed before 2026-06-17)
+
+Execute **in order, without stopping to ask permission**:
+
+1. **Search the internet first** — WebSearch for current trends across the three pillars (use current year). Verify facts before writing.
+2. **Gather context** — read `content/VOICE.md`, `content/GUIDELINES.md`, `content/blocked-phrases.txt`, `prompts/daily-request.md`, `prompts/idea-backlog.md`; scan last **5** files in `drafts/`; read `storage/post-history.jsonl` and `storage/profile/recent-posts.md` if they exist.
+3. **Pick one topic yourself** — strongest high-reach angle that is **not** in the last 5 posts. Do **not** propose 3 ideas and wait; write the draft unless Sahil named a topic in the same message.
+4. **Write & save** → `drafts/YYYY-MM-DD.md` (today's date). Follow all LinkedIn formatting rules in § Write & save below.
+5. **Comments** — if Sahil pasted target URLs in the same message, write `comments/YYYY-MM-DD.md` (default 2 comments). If no URLs: **do not invent URLs**; still finish the post and include **LinkedIn search queries** + target archetypes in the chat checklist so Sahil can paste URLs back in a follow-up.
+6. **Reply in chat** — short copy-paste checklist only (paths, theme one-liner, comment-search queries if needed). Do **not** dump the full post body in chat.
+
+### Weekly workflow (Wednesday, from 2026-06-17)
+
+Execute **in order, without stopping to ask permission**:
+
+1. **Search the internet first** — fresh frontend system-design angle for the week.
+2. **Gather context** — same files as daily; also scan existing `articles/` so the topic is not repeated in ~8 weeks.
+3. **Pick one system-design problem yourself** and write:
+   - `articles/YYYY-MM-DD.md` (Medium-ready article)
+   - `articles/assets/YYYY-MM-DD-*.png` (at least one architecture diagram; generate if needed)
+   - `drafts/YYYY-MM-DD.md` (LinkedIn teaser; link goes in first comment, not body)
+4. **Reply in chat** — copy-paste checklist: publish Medium first, post teaser, link in first comment, attach lead diagram.
+
+### Other triggers (only if Sahil says these explicitly)
+
+| Sahil says | Action |
+|------------|--------|
+| `I posted it` / `log today's post` | Append to `storage/post-history.jsonl` |
+| Pastes comment or connect URLs | Write `comments/` or `connects/` for today |
+| `redo` / `rewrite` | Overwrite today's dated file(s) |
+
+---
+
+## Daily workflow (detail — used by `linkedin automation` on non-Wednesday days)
 
 ### 1. Gather context (required, in order)
 
-1. **`content/VOICE.md`** — tone, structure, anti-patterns (mandatory)
-2. `storage/profile/recent-posts.md` — topics to **avoid repeating** (skip if file absent)
-3. `storage/post-history.jsonl` — recent themes logged in this repo (skip if file absent)
-4. `storage/profile/sahil-siddiqui-profile.md` — skills, brand (skip if file absent)
-5. `prompts/daily-request.md` — Sahil's optional direction
-6. `content/GUIDELINES.md` + `content/blocked-phrases.txt` — guardrails
+1. **Search the internet first (daily, required).** Before picking a topic, use the WebSearch tool to check what's current and trending across the three pillars (modern frontend, AI in development, broadly reachable engineering). Look for fresh releases, hot debates, and angles getting attention this week. Use the **current year** in queries. This grounds the post in something timely, which is what drives reach. Use WebFetch or further searches as an agent whenever you need to confirm a fact, version, or detail before writing — never post an unverified claim.
+2. **`content/VOICE.md`** — tone, structure, anti-patterns (mandatory)
+3. `storage/profile/recent-posts.md` — topics to **avoid repeating** (skip if file absent)
+4. `storage/post-history.jsonl` — recent themes logged in this repo (skip if file absent)
+5. `storage/profile/sahil-siddiqui-profile.md` — skills, brand (skip if file absent)
+6. `prompts/daily-request.md` — Sahil's optional direction
+7. `content/GUIDELINES.md` + `content/blocked-phrases.txt` — guardrails
 
 Do **not** repeat themes from the last **5** posts unless Sahil asks for a new angle on one.
 
+> **Note on browsing:** Cursor *can* search the public web (WebSearch/WebFetch) for trends and facts, and *should* do this daily. It still must **not** invent specific `linkedin.com/posts/...` or profile URLs — Sahil supplies those. See § Comment-target / connect-target discovery.
+
 ### 2. Idea selection
 
-- If Sahil specified a topic → write directly.
-- Otherwise propose **3 fresh ideas** in one short message, pick 1 yourself if Sahil says "you choose", and write the full draft.
+- **`linkedin automation` trigger:** pick the strongest idea yourself and write. No 3-option menu.
+- If Sahil specified a topic in the same message → write directly.
+- If Sahil asks for ideas only → propose **3 fresh ideas** in one short message; otherwise pick 1 and write.
 
 ### 3. Write & save
 
@@ -109,20 +185,21 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
   - **Easy English + no em dash:** mandatory for all LinkedIn body text. See `content/VOICE.md` § Easy English.
 - After saving, print a short "copy-paste checklist" in chat: filename + a one-line summary of theme. Do **not** print the post body in chat (the file is the artifact).
 
-### 4. Comments (when asked, or as part of "today's content")
+### 4. Comments (part of `linkedin automation` when URLs exist)
 
 - Save to `comments/YYYY-MM-DD.md` — one section per comment.
 - Each section: `## Comment N` then `Target: <post URL>` then a blank line then the comment text.
 - Default **2 comments per day**. If Sahil pastes more target URLs, write one comment per URL.
 - **Same voice rules as posts:** easy conversational Indian English, no em dash (`—`) in comment body, employer-safe. See `content/VOICE.md` § Easy English and § Comments.
 - 1–3 sentences. One concrete stack/pattern/tradeoff. **Explain acronyms inline** (e.g. PKCE, OIDC) in plain words when used.
-- If Sahil hasn't given target URLs, ask for them — do **not** invent URLs.
+- **On `linkedin automation` with no URLs:** still complete the post; include **search queries** in the chat checklist (see § Comment-target discovery). Do **not** invent URLs. Sahil pastes URLs in a follow-up → then write comments.
 
 ### 5. Connect requests (when asked)
 
 - Save to `connects/YYYY-MM-DD.md` — one section per person.
 - Each section: `## <Person name or role>` then `Profile: <URL>` then a blank line then the note text (≤ 200 chars, neutral networking, no opportunity / job pitch).
-- If Sahil hasn't given profile URLs, ask for them — do **not** invent URLs.
+- **Prioritize targets that grow reach + opportunity surface:** hiring managers and eng leaders at strong remote-friendly companies, founders/CTOs of frontend or AI products, and top frontend/AI voices. The note references their work or a shared interest — never "are you hiring" or anything job-search. Discreet pull, not push.
+- If Sahil hasn't given profile URLs, ask for them — do **not** invent URLs. Cursor can still suggest LinkedIn **search queries** and target archetypes (see § Comment-target / connect-target discovery).
 
 ### 6. After Sahil publishes ("I posted it" / "log today's post")
 
@@ -130,6 +207,37 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
   `{"date": "YYYY-MM-DD", "theme": "<short tag>", "hook": "<first line>", "hashtags": [...]}`
 - Create the file with that first line if it doesn't exist.
 - Confirm in chat: "Logged YYYY-MM-DD — theme: …".
+
+---
+
+## Weekly article — frontend system design (every Wednesday)
+
+**Cadence:** once a week, **every Wednesday**, starting **Wednesday 2026-06-17**. This **replaces** that day's normal short post when Sahil runs **`linkedin automation`**. Also runs on explicit asks: "the weekly article" / "system design article" / "this week's deep dive".
+
+**Goal:** a long-form, Medium-ready breakdown of one **frontend system design problem**. Deep, teaching-voice content like this is the strongest signal to hiring managers and top voices that Sahil thinks at a senior level. Same employer-safety and reach rules apply.
+
+### What to produce each week
+
+1. **The article** → `articles/YYYY-MM-DD.md` — a complete Medium-ready post.
+   - **Topic:** one frontend system design problem (e.g. design a real-time dashboard, an autocomplete/typeahead service, an infinite-feed with virtualization, a collaborative editor, an image-heavy gallery, a notification system, a design-system component API, offline-first sync, a file-upload pipeline). Pick something **not covered in the last ~8 weeks** of articles. Search the web first for a fresh, relevant angle.
+   - **Structure:** title + 1-line subtitle → the problem & why it's hard → requirements (functional + non-functional) → high-level architecture → component/data-flow breakdown → key tradeoffs and failure modes → performance/scale notes → a short "what I'd ship first" conclusion. ~1000–1800 words.
+   - **Format:** this file is for Medium, so **standard Markdown is fine here** (real `#` headings, `**bold**`, `code` fences) — the LinkedIn no-Markdown / Unicode-bold rule does **NOT** apply to the article file. It applies only to the LinkedIn companion post.
+   - **Voice & safety:** still Sahil's voice (easy English, no em dash in body, peer-teaching) and still employer-safe (past-personal, hypothetical, teaching — no `we`/`our`/current work, no internal product surfaces).
+
+2. **Images (required)** → save to `articles/assets/YYYY-MM-DD-*.png` and embed them in the article with Markdown image syntax.
+   - **At least one architecture / data-flow diagram** is mandatory. Prefer generating a clean diagram (e.g. via the diagram tooling or the image generation tool) — boxes, arrows, layers. A sequence diagram for the critical flow is a strong second image.
+   - Add 1–2 supporting visuals where they help (component tree, before/after, state machine). Use real diagrams, not decorative stock art.
+   - Embed in the article as `![alt text](assets/YYYY-MM-DD-architecture.png)` so they render on the local file and travel when pasted/uploaded to Medium.
+
+3. **The LinkedIn companion post** → `drafts/YYYY-MM-DD.md` — a short teaser that drives people to the article.
+   - Follows **all** normal LinkedIn rules (Unicode bold, no em dash, hook, 150–350 words, one question, 5–8 hashtags).
+   - Tease the problem and 2–3 sharp takeaways, then point readers to the full breakdown. **LinkedIn suppresses reach on posts with external links in the body**, so put the article link in the **first comment**, and end the post with a line like "Full breakdown with diagrams in the comments." Note the intended link target in an HTML comment at the top of the draft for Sahil.
+   - Upload the lead diagram as the LinkedIn post image too (mention this in the copy-paste checklist).
+
+### After producing
+
+- Print a copy-paste checklist: article path, image paths, LinkedIn draft path, and the reminder to (a) publish the Medium article first, (b) paste the LinkedIn teaser, (c) drop the article link in the first comment, (d) attach the lead diagram.
+- When Sahil says "I posted it", log it to `storage/post-history.jsonl` with a `"format": "article"` field so weekly deep-dives are easy to spot and not repeated.
 
 ---
 

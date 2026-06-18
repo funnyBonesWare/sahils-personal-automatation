@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Frontend System Design: Building a Real-Time Dashboard That Doesn't Melt the Browser</title>
+</head>
+<body>
+
+<p><strong>From WebSocket frames to pixels: layers, batching, and the merge rules that actually matter.</strong></p>
+
+<p>Imagine a dashboard with 800 live rows, six KPI cards, and two charts. A new tick arrives every 50ms. On localhost, you wire socket.onmessage to setState and it feels fine. Ship it to staging on spotty 4G and the tab stutters. Scroll the grid and it gets worse. Open DevTools and React is reconciling the whole tree hundreds of times per second.</p>
+
+<p>The WebSocket API is five lines. The frontend system around it is not.</p>
+
+<p>This article breaks down how I'd design the <strong>client side</strong> of a real-time operational dashboard: not the Kafka cluster or the OLAP database, but the layers between the socket and the screen. The patterns here apply whether you're on React 19, Vue, or Svelte. The failure modes are the same.</p>
+
+<h2>The problem (and why demos lie)</h2>
+
+<p>A real-time dashboard has three jobs at once:</p>
+
+<ol>
+  <li><strong>Ingest</strong> a stream of partial updates (not full snapshots every tick).</li>
+  <li><strong>Merge</strong> those updates into stable, queryable state per widget.</li>
+  <li><strong>Render</strong> only what changed, at a cadence humans can actually perceive.</li>
+</ol>
+
+<p>Demos cheat. They update one number on a card. Production sends row patches, alert counts, chart points, and presence flags on the same connection. If every message triggers a React render, you don't have a dashboard. You have a stress test.</p>
+
+<p>The hard part isn't opening a socket. It's <strong>decoupling transport from rendering</strong> so the UI stays responsive when the network doesn't.</p>
+
+<h2>Requirements</h2>
+
+<h3>Functional</h3>
+
+<ul>
+  <li>Subscribe to multiple topics (e.g. summary metrics, incident feed, entity grid) with independent lifecycle.</li>
+  <li>Apply partial updates: patch a row, append an event, replace a KPI value.</li>
+  <li>Show <strong>last updated</strong> time and a clear degraded state during reconnect.</li>
+  <li>Support user actions (acknowledge alert, change filter) without losing in-flight updates.</li>
+  <li>Initial load from REST, then live stream takes over without a full-page refresh.</li>
+</ul>
+
+<h3>Non-functional</h3>
+
+<ul>
+  <li><strong>Latency:</strong> perceived update within ~200ms (human perception floor; faster is wasted work).</li>
+  <li><strong>Throughput:</strong> handle 50–200 messages/sec per client without main-thread jank.</li>
+  <li><strong>Resilience:</strong> auto-reconnect with exponential backoff, resubscribe, and stale-data indicators.</li>
+  <li><strong>Memory:</strong> bounded buffers; don't accumulate unbounded event history in React state.</li>
+  <li><strong>Accessibility:</strong> live regions for critical alerts, not every tick.</li>
+</ul>
+
+<h2>High-level architecture</h2>
+
+<p>Don't let UI components talk to a raw socket. Put explicit layers between the network and the pixels.</p>
+
+<p><em>[Insert image here: 2026-06-17-architecture.png — layered architecture diagram]</em></p>
+
+<h3>1. Transport</h3>
+
+<p><strong>WebSocket</strong> when you need bidirectional, low-latency channels: commands, presence, high-frequency entity grids.</p>
+
+<p><strong>Server-Sent Events (SSE)</strong> when the server only pushes one-way: status feeds, progress streams, notification counts. SSE rides HTTP, reconnects automatically, and plays nicer with some corporate proxies.</p>
+
+<p>Pick per channel, not one winner for the whole app.</p>
+
+<h3>2. Connection manager (singleton)</h3>
+
+<p>One module owns:</p>
+
+<ul>
+  <li>Open / close / reconnect with <strong>exponential backoff + jitter</strong></li>
+  <li>Auth token refresh before the socket dies silently</li>
+  <li>Heartbeat / ping to detect half-open connections</li>
+  <li><strong>Subscription registry:</strong> which topics this tab wants, replayed after reconnect</li>
+  <li>Routing raw frames to the event processor (never to React directly)</li>
+</ul>
+
+<p>On reconnect, the UI must not pretend everything is fine. Show degraded mode, last good timestamp, and whether user actions are queued or disabled.</p>
+
+<h3>3. Event processor</h3>
+
+<p>Raw socket messages are untrusted input. This layer:</p>
+
+<ul>
+  <li><strong>Validates</strong> schema (even a lightweight check: required fields, known event types)</li>
+  <li><strong>Dedupes</strong> by event ID or sequence number</li>
+  <li><strong>Orders</strong> when the contract requires it (some feeds are eventually consistent; document which)</li>
+  <li><strong>Routes</strong> to the correct state boundary (grid store vs KPI store vs alert feed)</li>
+  <li><strong>Buffers</strong> high-frequency bursts before merge</li>
+</ul>
+
+<h3>4. State boundaries</h3>
+
+<p>Avoid one global useState for the entire dashboard. Isolation limits blast radius.</p>
+
+<ul>
+  <li><strong>Initial page / historical aggregates</strong> → TanStack Query (or similar). Caching, dedupe, background refetch.</li>
+  <li><strong>Live KPIs, grid rows, alert list</strong> → Per-widget store (Zustand, or external store). Scoped subscriptions, stable selectors.</li>
+  <li><strong>Ephemeral UI</strong> (panel open, sort column) → Local component state. Doesn't belong in the socket pipeline.</li>
+</ul>
+
+<p>For high-frequency external data, keep the live store <strong>outside React</strong>. Components subscribe to snapshots via useSyncExternalStore. React doesn't own the firehose; it reads what it needs.</p>
+
+<h3>5. UI widgets</h3>
+
+<p>Each widget:</p>
+
+<ul>
+  <li>Subscribes to a <strong>selector</strong> (e.g. "rows visible in viewport + sort key"), not the whole store</li>
+  <li>Virtualizes lists with 50+ rows (TanStack Virtual, AG Grid, etc.)</li>
+  <li>Memoizes chart inputs so a KPI tick doesn't repaint unrelated charts</li>
+  <li>Throttles visual updates to requestAnimationFrame or ~100ms, whichever matches the widget</li>
+</ul>
+
+<h2>Critical data flow: socket to screen</h2>
+
+<p><em>[Insert image here: 2026-06-17-dataflow.png — socket-to-screen data flow diagram]</em></p>
+
+<p><strong>The anti-pattern:</strong> onmessage → JSON.parse → setState. Every message schedules a render. At 100 msg/sec, React spends more time reconciling than the user spends reading.</p>
+
+<p><strong>The pattern that scales:</strong></p>
+
+<ol>
+  <li><strong>Append</strong> parsed events to a ref-based buffer (no render).</li>
+  <li><strong>Flush</strong> on requestAnimationFrame or a fixed interval (e.g. 100ms).</li>
+  <li><strong>Merge</strong> the batch into the external store with deterministic rules (see below).</li>
+  <li><strong>Notify</strong> subscribers; React re-renders only components whose selector output changed.</li>
+</ol>
+
+<p>For a virtualized grid, pass <strong>stable row object references</strong> when cell values didn't change. Recreating every row object every tick defeats memoization and makes AG Grid work harder for no reason.</p>
+
+<h2>Merge semantics (where bugs hide)</h2>
+
+<p>Document merge rules per event type before writing UI code.</p>
+
+<ul>
+  <li><strong>ROW_PATCH</strong> → Upsert by row ID; ignore if sequence ≤ stored sequence</li>
+  <li><strong>ROW_DELETE</strong> → Remove by ID; tombstone if undo matters</li>
+  <li><strong>KPI_UPDATE</strong> → Replace value + timestamp; animate only if delta exceeds threshold</li>
+  <li><strong>ALERT_NEW</strong> → Prepend to bounded ring buffer (max N items)</li>
+  <li><strong>FULL_SNAPSHOT</strong> → Replace entire slice (use sparingly; usually on reconnect)</li>
+</ul>
+
+<p>Out-of-order delivery happens on reconnect and on multi-partition backends. If you don't track sequence numbers, you'll show stale data confidently. That's worse than showing a spinner.</p>
+
+<h2>Key tradeoffs</h2>
+
+<h3>One socket vs many</h3>
+
+<p>One multiplexed WebSocket simplifies auth and reconnect. Multiple SSE channels simplify debugging and let you tune cache headers per feed. Hybrid is common: SSE for alerts, WebSocket for the interactive grid.</p>
+
+<h3>React state vs external store</h3>
+
+<p>React state is fine for low-frequency data (&lt; 5 updates/sec per widget). Above that, external store + batching wins. React Compiler helps with memo boilerplate; it does <strong>not</strong> fix a firehose into setState.</p>
+
+<h3>Optimistic UI</h3>
+
+<p>Optimistic acks feel fast but need rollback paths when the command fails after reconnect. Queue commands while disconnected, replay on open, and surface conflicts ("someone else already acked this").</p>
+
+<h3>Polling fallback</h3>
+
+<p>When WebSockets are blocked, fall back to short polling with ETags or Last-Event-ID. Degraded, but usable. Hide the transport choice behind the connection manager so widgets don't care.</p>
+
+<h2>Failure modes I've debugged</h2>
+
+<ol>
+  <li><strong>Tab backgrounded:</strong> timers throttle; socket stays open but flush interval drifts. On visibilitychange, request a snapshot or catch-up delta.</li>
+  <li><strong>Reconnect storm:</strong> 10k tabs reconnect at once after deploy. Backoff with jitter on the client; server-side rate limit on handshake.</li>
+  <li><strong>Memory leak:</strong> forgotten onmessage handler after route change. Connection manager must be route-aware or truly app-global with explicit teardown.</li>
+  <li><strong>Stale closure in socket callback:</strong> handler captures old dispatch. Bind handlers once; read latest subscription map from a ref.</li>
+  <li><strong>Chart + grid shared context:</strong> one Context provider holds theme + live prices. Every tick re-renders the chart. Split contexts or move live data to external stores.</li>
+</ol>
+
+<h2>Performance notes</h2>
+
+<ul>
+  <li><strong>Sample the stream, don't render the firehose.</strong> Users can't perceive sub-200ms updates on a KPI card. Match flush rate to widget type (grid vs sparkline vs alert badge).</li>
+  <li><strong>Virtualize early.</strong> 500 rows with DOM nodes is a pagination problem wearing a real-time costume.</li>
+  <li><strong>Web Workers</strong> for heavy client-side aggregation (rolling averages, anomaly scoring). Keep the main thread for input and paint.</li>
+  <li><strong>Measure with Production-like data.</strong> Chrome DevTools Performance tab with CPU 4x slowdown and "Offline" throttling catches what Profiler misses.</li>
+</ul>
+
+<h2>What I'd ship first (MVP order)</h2>
+
+<ol>
+  <li><strong>Connection manager</strong> with reconnect, backoff, and a visible "last updated" indicator.</li>
+  <li><strong>REST initial load</strong> via TanStack Query for each widget's first paint.</li>
+  <li><strong>One live widget</strong> (a single KPI or a small grid) with ref buffer + rAF flush + external store.</li>
+  <li><strong>Merge rules in one module</strong> with unit tests for out-of-order and duplicate events.</li>
+  <li><strong>Virtualized grid</strong> once row count justifies it, not before.</li>
+  <li><strong>Second transport or polling fallback</strong> only after the happy path is stable in staging on bad networks.</li>
+</ol>
+
+<p>Skip building all six widgets live on day one. Prove the pipeline on one surface, then clone the pattern.</p>
+
+<h2>Closing thought</h2>
+
+<p>Real-time frontend system design is less about which framework you pick and more about <strong>where you draw boundaries</strong>: socket vs processor vs store vs widget. Get those lines right and React Compiler, virtualization, and TypeScript are force multipliers. Blur them and no amount of useMemo saves you.</p>
+
+<p>The senior habit: before adding a library, ask whether the bug is transport, merge, or render. Fix the right layer.</p>
+
+<p><em>Written by Sahil Siddiqui. Frontend engineer focused on React, TypeScript, and production UIs that stay fast under load.</em></p>
+
+</body>
+</html>

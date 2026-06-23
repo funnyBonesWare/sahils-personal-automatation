@@ -49,7 +49,7 @@ The point of every post is reach + replies, so the right people see it.
 3. **Numbered sections** — 1️⃣ 2️⃣ 3️⃣ or "1. … 2. …" with **bold sub-labels**
 4. **Production lens** — junior vs senior, localhost vs staging, what breaks at scale
 5. **One question** at the end — invite discussion ("What's been your most painful…?", "How deep do you go…?")
-6. **Hashtags** — 5–8 at the end, relevant (see below); don't dump #Hiring on every post
+6. **Hashtags** — 12–15 at the end, three-tier mix (see § Hashtags); no #Hiring / #OpenToWork
 
 **Length:** ~150–350 words. Scannable. Short paragraphs. Line breaks between ideas.
 
@@ -162,13 +162,26 @@ When commenting on **engineering posts**:
 
 ---
 
-## Hashtags (your habit, refined)
+## Hashtags (reach + visibility — recruiters, hiring managers, engineers)
 
-You often use: #FrontendDevelopment #ReactJS #JavaScript #TypeScript #SystemDesign #SoftwareEngineering #WebDevelopment
+Optimize for **discoverability** without job-search signals. Recruiters and hiring managers search and follow topic + role tags. Engineers search stack tags. Use all three tiers every post.
 
-- Keep **5–8** max on automated drafts
-- Match the post topic (don't paste the same block every time)
-- Skip #Hiring #TechJobs #OpenToWork (colleague-safe + guardrails)
+**Count:** 12–15 hashtags on one line at the end. Match the post topic; rotate tags so the block is not identical every day.
+
+**Tier 1 — Topic (4–5):** stack and subject of the post.
+Examples: `#TypeScript` `#ReactJS` `#NextJS` `#AI` `#WebSockets` `#SystemDesign` `#JavaScript` `#DevTools`
+
+**Tier 2 — Role / audience visibility (4–5):** tags recruiters, hiring managers, and eng leaders actually browse. Signals seniority and craft without saying "hire me".
+Examples: `#FrontendEngineer` `#FrontendDevelopment` `#SoftwareEngineering` `#TechLeadership` `#SeniorEngineer` `#SoftwareDeveloper` `#EngineeringLeadership` `#FullStackDeveloper`
+
+**Tier 3 — Reach / community (3–5):** broader discovery and engagement.
+Examples: `#WebDevelopment` `#Programming` `#TechCommunity` `#BuildInPublic` `#DeveloperLife` `#CodeQuality` `#TechTrends`
+
+**Still blocked (colleague-safe + guardrails):**
+- `#OpenToWork` `#Hiring` `#TechJobs` `#NowHiring` `#JobSearch` `#Recruiting`
+- Generic spam dumps on every post: `#Innovation` `#Technology` `#Management` `#Motivation` (one is fine if topic-relevant; never all four together)
+
+**Pull, not push:** visibility tags get you in front of the right people. Never pair them with "looking for roles" language in the post body.
 
 ---
 

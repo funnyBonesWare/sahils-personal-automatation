@@ -85,6 +85,7 @@ Safety rules: `content/GUIDELINES.md` and `content/blocked-phrases.txt`. Coworke
 | Path | Purpose |
 |------|---------|
 | `drafts/YYYY-MM-DD.md` | Today's post body + hashtags |
+| `drafts/assets/YYYY-MM-DD-*.png` | Daily post diagram/image (required for every daily post) |
 | `articles/YYYY-MM-DD.md` | Weekly long-form frontend system design article (Medium-ready, with images). See § Weekly article. |
 | `articles/assets/YYYY-MM-DD-*.png` | Images/diagrams embedded in that week's article |
 | `comments/YYYY-MM-DD.md` | Up to 2 comments for today — each with target post URL + comment text |
@@ -122,8 +123,9 @@ Execute **in order, without stopping to ask permission**:
 2. **Gather context** — read `content/VOICE.md`, `content/GUIDELINES.md`, `content/blocked-phrases.txt`, `prompts/daily-request.md`, `prompts/idea-backlog.md`; scan last **5** files in `drafts/`; read `storage/post-history.jsonl` and `storage/profile/recent-posts.md` if they exist.
 3. **Pick one topic yourself** — strongest high-reach angle that is **not** in the last 5 posts. Do **not** propose 3 ideas and wait; write the draft unless Sahil named a topic in the same message.
 4. **Write & save** → `drafts/YYYY-MM-DD.md` (today's date). Follow all LinkedIn formatting rules in § Write & save below.
-5. **Comments** — if Sahil pasted target URLs in the same message, write `comments/YYYY-MM-DD.md` (default 2 comments). If no URLs: **do not invent URLs**; still finish the post and include **LinkedIn search queries** + target archetypes in the chat checklist so Sahil can paste URLs back in a follow-up.
-6. **Reply in chat** — short copy-paste checklist only (paths, theme one-liner, comment-search queries if needed). Do **not** dump the full post body in chat.
+5. **Post image (required)** → generate a clean topic diagram and save to `drafts/assets/YYYY-MM-DD-<slug>.png`. Note the path in the draft HTML comment. Mention attach in the chat checklist.
+6. **Comments** — if Sahil pasted target URLs in the same message, write `comments/YYYY-MM-DD.md` (default 2 comments). If no URLs: **do not invent URLs**; still finish the post and include **LinkedIn search queries** + target archetypes in the chat checklist so Sahil can paste URLs back in a follow-up.
+7. **Reply in chat** — short copy-paste checklist only (paths, theme one-liner, attach image reminder, comment-search queries if needed). Do **not** dump the full post body in chat.
 
 ### Weekly workflow (Wednesday, from 2026-06-17)
 
@@ -173,7 +175,8 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
 
 - **Post** → `drafts/YYYY-MM-DD.md` using the structure in `content/VOICE.md`.
   - Body: 150–350 words, hook → personal anchor → numbered sections → production lens → one engagement question.
-  - Hashtags: 5–8 on a separate line at the end. No `#OpenToWork`, `#Hiring`, `#TechJobs`.
+  - **Post image (required):** generate a clean topic diagram (architecture, comparison, or flow) → `drafts/assets/YYYY-MM-DD-<slug>.png`. Match the style of prior assets: dark background, labeled boxes, arrows, one clear takeaway. Note the path in the draft HTML comment (`Post image: …`).
+  - **Hashtags:** 12–15 on a separate line at the end. Use the tier mix in `content/VOICE.md` § Hashtags (topic + role/visibility + reach). Still no `#OpenToWork`, `#Hiring`, `#TechJobs`, or generic spam blocks.
 - **LinkedIn formatting (critical):** LinkedIn does not render Markdown. Write bold and italics directly with Unicode mathematical sans-serif characters — never `**bold**` or `*italic*` — and do not wrap code identifiers in backticks (LinkedIn shows them literally).
   - Bold uppercase: `𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭`
   - Bold lowercase: `𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇`
@@ -183,7 +186,7 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
   - Use bold for: the opening hook line, every numbered section label, and any 1–2 word emphasis. Use italic for a single emphasized word/phrase. Use neither for code identifiers — write `useMemo`, `React.memo`, `valueGetter` as plain text.
   - **Numbered sections:** put the `1️⃣` label on its own line; start body text on the next line. Do not join label and body with `—`.
   - **Easy English + no em dash:** mandatory for all LinkedIn body text. See `content/VOICE.md` § Easy English.
-- After saving, print a short "copy-paste checklist" in chat: filename + a one-line summary of theme. Do **not** print the post body in chat (the file is the artifact).
+- After saving, print a short "copy-paste checklist" in chat: filename + image path + attach-image reminder + a one-line summary of theme. Do **not** print the post body in chat (the file is the artifact).
 
 ### 4. Comments (part of `linkedin automation` when URLs exist)
 
@@ -230,7 +233,7 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
    - Embed in the article as `![alt text](assets/YYYY-MM-DD-architecture.png)` so they render on the local file and travel when pasted/uploaded to Medium.
 
 3. **The LinkedIn companion post** → `drafts/YYYY-MM-DD.md` — a short teaser that drives people to the article.
-   - Follows **all** normal LinkedIn rules (Unicode bold, no em dash, hook, 150–350 words, one question, 5–8 hashtags).
+   - Follows **all** normal LinkedIn rules (Unicode bold, no em dash, hook, 150–350 words, one question, 12–15 hashtags per § Hashtags in `content/VOICE.md`).
    - Tease the problem and 2–3 sharp takeaways, then point readers to the full breakdown. **LinkedIn suppresses reach on posts with external links in the body**, so put the article link in the **first comment**, and end the post with a line like "Full breakdown with diagrams in the comments." Note the intended link target in an HTML comment at the top of the draft for Sahil.
    - Upload the lead diagram as the LinkedIn post image too (mention this in the copy-paste checklist).
 

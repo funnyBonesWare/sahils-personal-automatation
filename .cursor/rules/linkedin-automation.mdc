@@ -19,6 +19,6 @@ Before writing any post or comment:
 3. **Read `LinkedIn Automation/content/VOICE.md`** — voice manual (easy English, no em dash, explain acronyms in comments).
 4. Full operating manual: `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
 
-**Weekly article:** every **Wednesday** (starting **2026-06-17**), produce a long-form frontend **system design** article (Medium-ready, **with diagrams/images**) plus a short LinkedIn teaser that links to it from the first comment. See the **Weekly article — frontend system design** section in `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
+**Weekly article:** every **Wednesday** (starting **2026-06-17**), produce a long-form frontend **system design** article (Medium-ready, **with diagrams/images**) plus a short LinkedIn teaser that links to it from the first comment. **Daily posts:** always generate a topic diagram image (`drafts/assets/YYYY-MM-DD-*.png`) and use **12–15 reach hashtags** (see `content/VOICE.md` § Hashtags). See `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
 
 No Python, no LinkedIn browser automation, no API key. Cursor *can* search the public web for trends/facts, but writes content into files; Sahil copy-pastes into LinkedIn manually.

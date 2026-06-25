@@ -1,5 +1,6 @@
 .DS_Store
 *.log
+Teams Availability/.keep-active.pid
 
 # Per-project storage (post history, profile context — keep local)
 **/storage/

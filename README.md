@@ -7,6 +7,7 @@ Private monorepo for personal workflow automation — **everything is prompt-dri
 | Folder | Description |
 |--------|-------------|
 | [**LinkedIn Automation**](LinkedIn%20Automation/) | Daily LinkedIn post, comments, and connection notes — Cursor writes content in Sahil's voice, Sahil copy-pastes into LinkedIn |
+| [**Teams Availability**](Teams%20Availability/) | Keeps Microsoft Teams from marking you idle — tiny mouse nudge every 4 minutes on macOS |
 
 More automations can be added as sibling folders later (e.g. Jira summaries, weekly exports). Each project owns its own `.cursor/rules/*.mdc`.
 

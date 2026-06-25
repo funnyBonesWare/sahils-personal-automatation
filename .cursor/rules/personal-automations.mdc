@@ -11,5 +11,6 @@ Private monorepo for personal automation projects. Everything is **prompt-driven
 ## Projects
 
 - **`LinkedIn Automation/`** — type **`linkedin automation`** in chat; Cursor runs the full pipeline (web search, topic pick, write files). Daily post Mon/Tue/Thu–Sun; **Wednesday** = weekly frontend system-design article + diagrams + LinkedIn teaser. See `LinkedIn Automation/.cursor/rules/linkedin-automation.mdc`.
+- **`Teams Availability/`** — run `python3 keep-active.py` (or `./start.sh`) to prevent Microsoft Teams idle/Away status on macOS. See `Teams Availability/README.md`.
 
 Future projects live as sibling folders at the repo root with their own `.cursor/rules/*.mdc`.

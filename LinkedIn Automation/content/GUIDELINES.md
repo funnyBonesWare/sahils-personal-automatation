@@ -44,7 +44,7 @@ Also fine:
 ## Comments (1–2/day; more if Sahil pastes extra URLs)
 
 - **Same rules as posts:** easy conversational Indian English, no em dash (`—`), employer-safe
-- Match **`content/VOICE.md`** — peer engineer, 1–3 sentences, specific insight
+- Match **`content/VOICE.md`** — peer engineer, **max 2–3 lines**, human tone, specific insight
 - Add value: stack, pattern, tradeoff, or brief past-personal experience (`I've seen…`, `I ran into…`)
 - **Explain acronyms inline** (PKCE, OIDC, RSC, etc.) in plain words when you use them
 - **Do not** say `we saw…`, `our team…`, or anything that implies a current employer — same rule as posts

@@ -72,7 +72,7 @@ All three pillars stay employer-safe via past-personal, hypothetical, or teachin
 - **Never:** "excited to share", "let's dive in", "game-changer", hollow praise, hashtag spam, job-search language, employer-identifying detail
 - **Easy English:** simple words, short sentences, warm Indian professional tone (see `content/VOICE.md` § Easy English). Not essay-polished.
 - **No em dash (`—`)** in post / comment / connect body. Use full stop, comma, colon, or new line. Em dash in numbered labels is a common AI tell.
-- Comments: same easy English + no em dash rules as posts. 1–3 sentences, peer engineer, one concrete technical point. Explain acronyms inline in plain words. Not "Great post!"
+- Comments: same easy English + no em dash rules as posts. **Max 2–3 lines total.** Human, like a quick thread reply. Not a mini-essay. One concrete technical point. Explain acronyms inline in plain words. Not "Great post!"
 
 If the draft could be anyone's LinkedIn template, **rewrite until it matches `content/VOICE.md` excerpts**.
 
@@ -194,7 +194,7 @@ Do **not** repeat themes from the last **5** posts unless Sahil asks for a new a
 - Each section: `## Comment N` then `Target: <post URL>` then a blank line then the comment text.
 - Default **2 comments per day**. If Sahil pastes more target URLs, write one comment per URL.
 - **Same voice rules as posts:** easy conversational Indian English, no em dash (`—`) in comment body, employer-safe. See `content/VOICE.md` § Easy English and § Comments.
-- 1–3 sentences. One concrete stack/pattern/tradeoff. **Explain acronyms inline** (e.g. PKCE, OIDC) in plain words when used.
+- **Max 2–3 lines total.** Human tone, like a quick reply. One concrete stack/pattern/tradeoff. **Explain acronyms inline** (e.g. PKCE, OIDC) in plain words when used.
 - **On `linkedin automation` with no URLs:** still complete the post; include **search queries** in the chat checklist (see § Comment-target discovery). Do **not** invent URLs. Sahil pastes URLs in a follow-up → then write comments.
 
 ### 5. Connect requests (when asked)

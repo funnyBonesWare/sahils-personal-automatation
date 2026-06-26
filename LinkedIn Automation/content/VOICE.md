@@ -143,7 +143,8 @@ These are Sahil's older published posts. **Match the cadence, contrast, and humi
 
 When commenting on **engineering posts**:
 
-- **1–3 sentences**, first person, one concrete insight or experience
+- **Max 2–3 lines total.** Short, human, like a quick reply in a thread. Not a mini-essay.
+- First person, one concrete insight or experience
 - Sound like a peer who's built similar systems. Not "Great post!" or "Thanks for sharing!"
 - Mention a tool/pattern briefly (React, PKCE, AG Grid, batching, etc.)
 - **Explain acronyms in plain words** when you use them. Don't drop PKCE, OIDC, RSC, etc. without a short inline meaning. Reader should not need Google.

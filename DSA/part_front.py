@@ -41,9 +41,10 @@ def cover():
 <section class="cover">
   <p class="eyebrow">Job-switch handbook</p>
   <h1>From zero to the interview</h1>
+  <p class="byline">Sahil Siddiqui<br><a href="https://www.linkedin.com/in/sahil-siddiqui-8416b8195/">https://www.linkedin.com/in/sahil-siddiqui-8416b8195/</a></p>
   <div class="rule"></div>
   <p class="deck">Arrays and matrices in JavaScript. Each chapter uses only ideas from earlier chapters. You start by indexing a list. You finish by filling a grid in order.</p>
-  <p class="meta">Sahil &nbsp;·&nbsp; one learning path &nbsp;·&nbsp; Stay, then Then, then a second pass</p>
+  <p class="meta">One learning path &nbsp;·&nbsp; Stay, then Then, then a second pass</p>
   <ol class="path">
     {''.join(items)}
   </ol>

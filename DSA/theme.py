@@ -61,7 +61,14 @@ def chapter(num, title, builds, idea, body, memory, carries):
 CSS = r"""
 @page {
   size: A4;
-  margin: 13mm 12mm 16mm 12mm;
+  margin: 22mm 12mm 16mm 12mm;
+  @top-center {
+    content: "Sahil Siddiqui   ·   https://www.linkedin.com/in/sahil-siddiqui-8416b8195/";
+    font-family: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    color: #1c1915;
+  }
   @bottom-left {
     content: "From zero  ·  arrays and matrices  ·  JavaScript";
     font-family: "Avenir Next", "Gill Sans", sans-serif;
@@ -111,6 +118,19 @@ li { margin: 0 0 4px; }
   font-weight: 600;
 }
 .deck { font-size: 13pt; line-height: 1.35; max-width: 42em; margin: 0 0 14px; }
+.byline {
+  font-family: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
+  font-size: 11pt;
+  font-weight: 650;
+  line-height: 1.45;
+  color: #1c1915;
+  margin: 0 0 10px;
+}
+.byline a {
+  font-weight: 600;
+  font-size: 10.5pt;
+  color: #1a365d;
+}
 .meta { color: #5e584e; font-size: 9.5pt; margin-bottom: 16px; }
 .path {
   display: grid;
